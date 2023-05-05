@@ -20,7 +20,7 @@ public class ActivityType {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "activity")
+    @OneToOne(mappedBy = "activityType")
     private Activity activity;
 
 }

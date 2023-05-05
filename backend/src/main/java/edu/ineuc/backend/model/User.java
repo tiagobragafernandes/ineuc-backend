@@ -1,6 +1,5 @@
 package edu.ineuc.backend.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -32,11 +31,11 @@ public class User {
     private List<Activity> activity;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_personal_data_id", referencedColumnName = "id")
+    @JoinColumn(name = "userPersonalData", referencedColumnName = "id")
     private UserPersonalData userPersonalData;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_role_id", referencedColumnName = "id")
+    @JoinColumn(name = "userRole", referencedColumnName = "id")
     private UserRole userRole;
 
 }

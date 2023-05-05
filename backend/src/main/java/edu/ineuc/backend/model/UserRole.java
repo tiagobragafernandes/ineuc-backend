@@ -22,7 +22,7 @@ public class UserRole {
     @Value(value = "regular")
     private String userType;
 
-    @OneToOne(mappedBy = "user_role")
+    @OneToOne(mappedBy = "userRole")
     private User user;
 
 }

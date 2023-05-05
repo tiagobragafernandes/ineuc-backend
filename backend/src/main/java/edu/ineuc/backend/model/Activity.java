@@ -28,7 +28,7 @@ public class Activity {
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "activity_type_id")
+    @JoinColumn(name = "activityType")
     private ActivityType activityType;
 
 }

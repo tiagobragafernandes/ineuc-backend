@@ -27,7 +27,7 @@ public class UserPersonalData {
     @Column(nullable = false)
     private Date dateOfBirth;
 
-    @OneToOne(mappedBy = "user_personal_data")
+    @OneToOne(mappedBy = "userPersonalData")
     private User user;
 
 }
