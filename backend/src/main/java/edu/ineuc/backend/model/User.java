@@ -1,6 +1,8 @@
 package edu.ineuc.backend.model;
 
+import edu.ineuc.backend.controller.dto.CreateUserData;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -37,5 +39,11 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userRole", referencedColumnName = "id")
     private UserRole userRole;
+
+    public User(CreateUserData data) {
+        this.email = data.getEmail();
+        this.password = data.getPassword();
+        this.isActive = data.getIsActive();
+    }
 
 }
