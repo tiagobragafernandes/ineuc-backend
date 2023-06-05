@@ -2,9 +2,7 @@ package edu.ineuc.backend.model;
 
 import edu.ineuc.backend.controller.dto.CreateUserData;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,9 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -43,10 +42,12 @@ public class User implements UserDetails {
     @JoinColumn(name = "userRole", referencedColumnName = "id")
     private UserRole userRole;
 
-    public User(CreateUserData data) {
+    public User(CreateUserData data, String encryptedPassword) {
         this.email = data.email();
-        this.password = data.password();
+        this.password = encryptedPassword;
         this.isActive = data.isActive();
+        this.userPersonalData = new UserPersonalData(data.createUserPersonalData());
+        this.userRole = new UserRole(data.userType());
     }
 
     @Override

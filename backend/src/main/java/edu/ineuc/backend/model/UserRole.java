@@ -1,5 +1,6 @@
 package edu.ineuc.backend.model;
 
+import edu.ineuc.backend.controller.dto.CreateUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,13 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    @Value(value = "regular")
     private String userType;
 
-    @OneToOne(mappedBy = "userRole")
+    @OneToOne(mappedBy = "userRole", cascade = CascadeType.ALL)
     private User user;
+
+    public UserRole(CreateUserRole userType) {
+        this.userType = userType.userType();
+    }
 
 }

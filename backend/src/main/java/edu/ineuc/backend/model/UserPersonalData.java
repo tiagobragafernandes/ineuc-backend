@@ -1,11 +1,13 @@
 package edu.ineuc.backend.model;
 
+import edu.ineuc.backend.controller.dto.CreateUserPersonalData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -25,9 +27,15 @@ public class UserPersonalData {
     private String lastName;
 
     @Column(nullable = false)
-    private Date dateOfBirth;
+    private LocalDate dob;
 
-    @OneToOne(mappedBy = "userPersonalData")
+    @OneToOne(mappedBy = "userPersonalData", cascade = CascadeType.ALL)
     private User user;
+
+    public UserPersonalData(CreateUserPersonalData createUserPersonalData){
+        this.firstName = createUserPersonalData.firstName();
+        this.lastName = createUserPersonalData.lastName();
+        this.dob = createUserPersonalData.dob();
+    }
 
 }

@@ -20,7 +20,7 @@ public class UserService {
 
         var encryptedPassword = passwordEncoder.encode(createUserData.password());
 
-        User user = userRepository.save(new User(createUserData));
+        User user = userRepository.save(new User(createUserData, encryptedPassword));
 
         return user;
 
