@@ -6,6 +6,7 @@ import edu.ineuc.backend.service.ActivityTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ public class ActivityTypeController {
     private final ActivityTypeService activityTypeService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity createActivityType(@RequestBody CreateActivityTypeDTO createActivityTypeDTO, UriComponentsBuilder uriBuilder){
 
         try{

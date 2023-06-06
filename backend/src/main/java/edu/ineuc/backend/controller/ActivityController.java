@@ -7,11 +7,11 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/activity")
@@ -21,6 +21,7 @@ public class ActivityController {
     private final ActivityService activityService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity createActivity(@RequestBody CreateActivityDTO createActivityDTO, UriComponentsBuilder uriBuilder){
 
         try {
@@ -34,6 +35,22 @@ public class ActivityController {
         }catch (EntityNotFoundException ex){
 
             return ResponseEntity.notFound().build();
+
+        }
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Activity>> listActivities(@PathVariable Long userId){
+
+        try{
+
+            List<Activity> activities = activityService.listActivities(userId);
+
+            return ResponseEntity.ok(activities);
+
+        }catch (Exception ex){
+
+            return ResponseEntity.badRequest().build();
 
         }
     }
