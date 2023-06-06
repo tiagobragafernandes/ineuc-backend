@@ -1,14 +1,15 @@
 package edu.ineuc.backend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import edu.ineuc.backend.controller.dto.CreateActivityTypeDTO;
+import lombok.*;
+import java.util.List;
 
 import jakarta.persistence.*;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "activity_type")
 public class ActivityType {
@@ -17,10 +18,14 @@ public class ActivityType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String name;
 
-    @OneToOne(mappedBy = "activityType")
-    private Activity activity;
+    @OneToMany(mappedBy = "activityType", fetch = FetchType.LAZY)
+    private List<Activity> activity;
+
+    public ActivityType(CreateActivityTypeDTO createActivityTypeDTO){
+        this.name = createActivityTypeDTO.name();
+    }
 
 }

@@ -1,6 +1,6 @@
 package edu.ineuc.backend.controller;
 
-import edu.ineuc.backend.controller.dto.AuthData;
+import edu.ineuc.backend.controller.dto.AuthDataDTO;
 import edu.ineuc.backend.controller.dto.TokenResponse;
 import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.service.TokenService;
@@ -23,9 +23,9 @@ public class AuthController {
     private final TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity auth(@RequestBody AuthData authData){
+    public ResponseEntity auth(@RequestBody AuthDataDTO authDataDTO){
 
-        var authToken = new UsernamePasswordAuthenticationToken(authData.email(), authData.password());
+        var authToken = new UsernamePasswordAuthenticationToken(authDataDTO.email(), authDataDTO.password());
 
         var authentication = manager.authenticate(authToken);
 

@@ -1,14 +1,15 @@
 package edu.ineuc.backend.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.ineuc.backend.controller.dto.CreateActivityDTO;
+import lombok.*;
 
 import jakarta.persistence.*;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "activity")
 public class Activity {
@@ -25,10 +26,19 @@ public class Activity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "activityType")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "activity_type_id")
+    @JsonIgnore
     private ActivityType activityType;
+
+    public Activity(CreateActivityDTO createActivityDTO, ActivityType activityType, User user){
+        this.description = createActivityDTO.description();
+        this.timeSpent = createActivityDTO.timeSpent();
+        this.user = user;
+        this.activityType = activityType;
+    }
 
 }
