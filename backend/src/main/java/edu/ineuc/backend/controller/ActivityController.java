@@ -25,17 +25,11 @@ public class ActivityController {
     public ResponseEntity createActivity(@RequestBody CreateActivityDTO createActivityDTO, UriComponentsBuilder uriBuilder){
 
         try {
-
             Activity activity = activityService.createActivity(createActivityDTO);
-
             var uri = uriBuilder.path("/activity/{id}").buildAndExpand(activity.getId()).toUri();
-
             return ResponseEntity.created(uri).body(activity);
-
         }catch (EntityNotFoundException ex){
-
-            return ResponseEntity.notFound().build();
-
+            return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
 
@@ -43,15 +37,10 @@ public class ActivityController {
     public ResponseEntity<List<Activity>> listActivities(@PathVariable Long userId){
 
         try{
-
             List<Activity> activities = activityService.listActivities(userId);
-
             return ResponseEntity.ok(activities);
-
         }catch (Exception ex){
-
             return ResponseEntity.badRequest().build();
-
         }
     }
 }

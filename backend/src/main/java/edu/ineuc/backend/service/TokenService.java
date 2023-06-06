@@ -17,11 +17,11 @@ public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    public String gerarToken(User user) {
+    public String generateToken(User user) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("PaymentAPI")
+                    .withIssuer("Ineuc API")
                     .withSubject(user.getEmail())
                     .withClaim("id", user.getId())
                     .withExpiresAt(expireDate())
@@ -35,7 +35,7 @@ public class TokenService {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    .withIssuer("PaymentAPI")
+                    .withIssuer("Ineuc API")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
@@ -48,7 +48,7 @@ public class TokenService {
     private Instant expireDate() {
         return LocalDateTime
                 .now()
-                .plusHours(2)
+                .plusHours(6)
                 .toInstant(ZoneOffset
                         .of("-03:00"));
     }

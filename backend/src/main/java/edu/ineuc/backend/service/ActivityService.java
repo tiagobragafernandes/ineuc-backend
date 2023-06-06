@@ -28,12 +28,12 @@ public class ActivityService {
 
         ActivityType activityType = activityTypeRepository.findById(activityId)
                 .orElseThrow(() ->
-                        new EntityNotFoundException("Atividade com id: " + activityId + " não foi encontrada.")
+                        new EntityNotFoundException("ERRO: Atividade com id: " + activityId + " não foi encontrada.")
                 );
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() ->
-                        new EntityNotFoundException("Usuário com id: " + userId + " não foi encontrada.")
+                        new EntityNotFoundException("ERRO: Usuário com id: " + userId + " não foi encontrada.")
                 );
 
         Activity activity = activityRepository.save(new Activity(createActivityDTO, activityType, user));
