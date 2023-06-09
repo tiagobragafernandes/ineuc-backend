@@ -2,7 +2,7 @@ package edu.ineuc.backend.security;
 
 import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.repository.UserRepository;
-import edu.ineuc.backend.service.TokenService;
+import edu.ineuc.backend.service.impl.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

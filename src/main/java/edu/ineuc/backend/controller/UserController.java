@@ -2,7 +2,7 @@ package edu.ineuc.backend.controller;
 
 import edu.ineuc.backend.controller.dto.CreateUserData;
 import edu.ineuc.backend.model.User;
-import edu.ineuc.backend.service.UserService;
+import edu.ineuc.backend.service.impl.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -2,7 +2,7 @@ package edu.ineuc.backend.controller;
 
 import edu.ineuc.backend.controller.dto.CreateActivityDTO;
 import edu.ineuc.backend.model.Activity;
-import edu.ineuc.backend.service.ActivityService;
+import edu.ineuc.backend.service.impl.ActivityService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

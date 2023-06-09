@@ -3,7 +3,7 @@ package edu.ineuc.backend.controller;
 import edu.ineuc.backend.controller.dto.AuthDataDTO;
 import edu.ineuc.backend.controller.dto.TokenResponse;
 import edu.ineuc.backend.model.User;
-import edu.ineuc.backend.service.TokenService;
+import edu.ineuc.backend.service.impl.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

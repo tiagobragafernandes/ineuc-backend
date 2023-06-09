@@ -1,4 +1,4 @@
-package edu.ineuc.backend.service;
+package edu.ineuc.backend.service.impl;
 
 import edu.ineuc.backend.controller.dto.CreateActivityDTO;
 import edu.ineuc.backend.model.Activity;
@@ -7,6 +7,7 @@ import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.repository.ActivityRepository;
 import edu.ineuc.backend.repository.ActivityTypeRepository;
 import edu.ineuc.backend.repository.UserRepository;
+import edu.ineuc.backend.service.ActivityContract;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class ActivityService {
+public class ActivityService implements ActivityContract {
 
     private final ActivityRepository activityRepository;
     private final UserRepository userRepository;
