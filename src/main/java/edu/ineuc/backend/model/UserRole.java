@@ -1,15 +1,14 @@
 package edu.ineuc.backend.model;
 
 import edu.ineuc.backend.controller.dto.req.CreateUserRoleData;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "user_role")
 public class UserRole {

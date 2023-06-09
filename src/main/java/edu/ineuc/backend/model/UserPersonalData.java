@@ -1,17 +1,17 @@
 package edu.ineuc.backend.model;
 
 import edu.ineuc.backend.controller.dto.req.CreateUserPersonalData;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "user_personal_data")
 public class UserPersonalData {
