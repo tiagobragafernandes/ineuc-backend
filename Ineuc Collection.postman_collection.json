@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "dd81e0f6-f972-4d50-8e8f-3a6622a40d88",
+		"name": "Ineuc Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27776452"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tiago@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"isActive\": 1,\r\n    \"createUserPersonalData\": {\r\n        \"firstName\": \"Tiago\",\r\n        \"lastName\": \"Fernandes\",\r\n        \"dob\": \"1998-07-27\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Detail User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aWFnbzEyM0BnbWFpbC5jb20iLCJpc3MiOiJJbmV1YyBBUEkiLCJpZCI6MywiZXhwIjoxNjg2MzYwMDc5fQ.MVY7eFiv83N8nrKkFYiU6dRkAjcYoqSdeZ3aCJACe6I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ActivityType",
+			"item": [
+				{
+					"name": "Create Activity Type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aWFnb0BnbWFpbC5jb20iLCJpc3MiOiJQYXltZW50QVBJIiwiaWQiOjMsImV4cCI6MTY4NjA2Mjc4NX0.5JmfLasnrWUozyA6WFZTGLg3r0CIkDV1LxAh1KwWo3U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Estudos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/activityType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"activityType"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activity",
+			"item": [
+				{
+					"name": "Create Activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aWFnb0BnbWFpbC5jb20iLCJpc3MiOiJQYXltZW50QVBJIiwiaWQiOjMsImV4cCI6MTY4NjA2Mjc4NX0.5JmfLasnrWUozyA6WFZTGLg3r0CIkDV1LxAh1KwWo3U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Estudos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/activityType",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"activityType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List activities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aWFnbzEyM0BnbWFpbC5jb20iLCJpc3MiOiJJbmV1YyBBUEkiLCJpZCI6MywiZXhwIjoxNjg2MzYwMDc5fQ.MVY7eFiv83N8nrKkFYiU6dRkAjcYoqSdeZ3aCJACe6I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/activity/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"activity",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

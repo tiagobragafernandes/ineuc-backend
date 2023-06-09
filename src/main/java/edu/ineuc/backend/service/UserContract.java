@@ -7,4 +7,6 @@ public interface UserContract {
 
     public User createUser(CreateUserData createUserData);
 
+    public User detailUser(Long id);
+
 }

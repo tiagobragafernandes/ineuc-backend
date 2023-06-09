@@ -4,6 +4,7 @@ import edu.ineuc.backend.controller.dto.req.CreateUserData;
 import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.repository.UserRepository;
 import edu.ineuc.backend.service.UserContract;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,4 +23,11 @@ public class UserService implements UserContract {
         return user;
     }
 
+    @Override
+    public User detailUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado!"));
+
+        return user;
+    }
 }
