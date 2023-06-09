@@ -19,13 +19,13 @@ public class TokenService {
 
     public String generateToken(User user) {
         try {
-            var algoritmo = Algorithm.HMAC256(secret);
+            Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("Ineuc API")
                     .withSubject(user.getEmail())
                     .withClaim("id", user.getId())
                     .withExpiresAt(expireDate())
-                    .sign(algoritmo);
+                    .sign(algorithm);
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro ao gerar token JWT" + exception);
         }
@@ -33,13 +33,12 @@ public class TokenService {
 
     public String getSubject(String tokenJWT){
         try {
-            var algorithm = Algorithm.HMAC256(secret);
+            Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
                     .withIssuer("Ineuc API")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
-
         } catch (JWTVerificationException exception){
             throw new RuntimeException("Token inválido, por favor faça o login novamente");
         }

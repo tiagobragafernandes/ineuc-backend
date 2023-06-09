@@ -17,18 +17,14 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = true)
+    @Column
     private String description;
-
     @Column(nullable = false)
     private Integer timeSpent;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "activity_type_id")
     @JsonIgnore

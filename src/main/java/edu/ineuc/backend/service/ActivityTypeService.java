@@ -14,11 +14,8 @@ public class ActivityTypeService {
     private final ActivityTypeRepository activityTypeRepository;
 
     public ActivityType createActivityType(CreateActivityTypeDTO createActivityTypeDTO){
-
         ActivityType activityType = activityTypeRepository.save(new ActivityType(createActivityTypeDTO));
-
         return activityType;
-
     }
 
 }

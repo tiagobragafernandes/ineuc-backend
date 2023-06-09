@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("user")
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
@@ -23,15 +25,9 @@ public class UserController {
     @PostMapping(path = "/create")
     @Transactional
     public ResponseEntity createUser(@RequestBody CreateUserData createUserData, UriComponentsBuilder uriBuilder){
-
         CreateUserData data = createUserData;
-
         User user = userService.createUser(data);
-
-        var uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
-
+        URI uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).body(user);
-
     }
-
 }

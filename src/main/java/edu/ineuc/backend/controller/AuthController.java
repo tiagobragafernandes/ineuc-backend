@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,14 +27,9 @@ public class AuthController {
     @PostMapping
     @Transactional
     public ResponseEntity auth(@RequestBody AuthDataDTO authDataDTO){
-
-        var authToken = new UsernamePasswordAuthenticationToken(authDataDTO.email(), authDataDTO.password());
-
-        var authentication = manager.authenticate(authToken);
-
-        var tokenJWT  = tokenService.generateToken((User) authentication.getPrincipal());
-
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(authDataDTO.email(), authDataDTO.password());
+        Authentication authentication = manager.authenticate(authToken);
+        String tokenJWT  = tokenService.generateToken((User) authentication.getPrincipal());
         return ResponseEntity.ok(new TokenResponse(tokenJWT));
-
     }
 }

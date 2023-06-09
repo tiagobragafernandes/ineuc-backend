@@ -1,4 +1,3 @@
 package edu.ineuc.backend.controller.dto;
 
-public record AuthDataDTO(String email, String password) {
-}
+public record AuthDataDTO(String email, String password) {}

@@ -18,9 +18,7 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String userType;
-
     @OneToOne(mappedBy = "userRole", cascade = CascadeType.ALL)
     private User user;
 

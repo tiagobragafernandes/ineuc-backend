@@ -17,10 +17,8 @@ public class ActivityType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String name;
-
     @OneToMany(mappedBy = "activityType", fetch = FetchType.LAZY)
     private List<Activity> activity;
 

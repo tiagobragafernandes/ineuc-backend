@@ -22,7 +22,6 @@ public class ActivityService {
     private final ActivityTypeRepository activityTypeRepository;
 
     public Activity createActivity(CreateActivityDTO createActivityDTO){
-
         Long activityId = createActivityDTO.activityId();
         Long userId = createActivityDTO.userId();
 
@@ -37,17 +36,12 @@ public class ActivityService {
                 );
 
         Activity activity = activityRepository.save(new Activity(createActivityDTO, activityType, user));
-
         return activity;
-
     }
 
     public List<Activity> listActivities(Long userId){
-
         List<Activity> activities = activityRepository.findAllByUserId(userId);
-
         return activities;
-
     }
 
 }

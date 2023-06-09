@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping("/activityType")
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
@@ -23,21 +25,12 @@ public class ActivityTypeController {
     @PostMapping
     @Transactional
     public ResponseEntity createActivityType(@RequestBody CreateActivityTypeDTO createActivityTypeDTO, UriComponentsBuilder uriBuilder){
-
         try{
-
             ActivityType activityType = activityTypeService.createActivityType(createActivityTypeDTO);
-
-            var uri = uriBuilder.path("/activityType/{id}").buildAndExpand(activityType.getId()).toUri();
-
+            URI uri = uriBuilder.path("/activityType/{id}").buildAndExpand(activityType.getId()).toUri();
             return ResponseEntity.created(uri).body(activityType);
-
         }catch (Exception ex){
-
             return ResponseEntity.badRequest().body(ex.getMessage());
-
         }
-
     }
-
 }
