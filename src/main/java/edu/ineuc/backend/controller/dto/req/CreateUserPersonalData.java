@@ -1,4 +1,4 @@
-package edu.ineuc.backend.controller.dto;
+package edu.ineuc.backend.controller.dto.req;
 
 import java.time.LocalDate;
 

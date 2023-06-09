@@ -1,6 +1,6 @@
 package edu.ineuc.backend.controller;
 
-import edu.ineuc.backend.controller.dto.CreateActivityDTO;
+import edu.ineuc.backend.controller.dto.req.CreateActivityData;
 import edu.ineuc.backend.model.Activity;
 import edu.ineuc.backend.service.impl.ActivityService;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,9 +23,9 @@ public class ActivityController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity createActivity(@RequestBody CreateActivityDTO createActivityDTO, UriComponentsBuilder uriBuilder){
+    public ResponseEntity createActivity(@RequestBody CreateActivityData createActivityData, UriComponentsBuilder uriBuilder){
         try {
-            Activity activity = activityService.createActivity(createActivityDTO);
+            Activity activity = activityService.createActivity(createActivityData);
             URI uri = uriBuilder.path("/activity/{id}").buildAndExpand(activity.getId()).toUri();
             return ResponseEntity.created(uri).body(activity);
         }catch (EntityNotFoundException ex){

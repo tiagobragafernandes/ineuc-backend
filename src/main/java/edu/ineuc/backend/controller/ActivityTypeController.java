@@ -1,6 +1,6 @@
 package edu.ineuc.backend.controller;
 
-import edu.ineuc.backend.controller.dto.CreateActivityTypeDTO;
+import edu.ineuc.backend.controller.dto.req.CreateActivityTypeData;
 import edu.ineuc.backend.model.ActivityType;
 import edu.ineuc.backend.service.impl.ActivityTypeService;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +24,9 @@ public class ActivityTypeController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity createActivityType(@RequestBody CreateActivityTypeDTO createActivityTypeDTO, UriComponentsBuilder uriBuilder){
+    public ResponseEntity createActivityType(@RequestBody CreateActivityTypeData createActivityTypeData, UriComponentsBuilder uriBuilder){
         try{
-            ActivityType activityType = activityTypeService.createActivityType(createActivityTypeDTO);
+            ActivityType activityType = activityTypeService.createActivityType(createActivityTypeData);
             URI uri = uriBuilder.path("/activityType/{id}").buildAndExpand(activityType.getId()).toUri();
             return ResponseEntity.created(uri).body(activityType);
         }catch (Exception ex){

@@ -1,10 +1,9 @@
 package edu.ineuc.backend.model;
 
-import edu.ineuc.backend.controller.dto.CreateUserRole;
+import edu.ineuc.backend.controller.dto.req.CreateUserRoleData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.persistence.*;
 
@@ -22,7 +21,7 @@ public class UserRole {
     @OneToOne(mappedBy = "userRole", cascade = CascadeType.ALL)
     private User user;
 
-    public UserRole(CreateUserRole userType) {
+    public UserRole(CreateUserRoleData userType) {
         this.userType = userType.userType();
     }
 

@@ -1,6 +1,6 @@
 package edu.ineuc.backend.model;
 
-import edu.ineuc.backend.controller.dto.CreateUserData;
+import edu.ineuc.backend.controller.dto.req.CreateUserData;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,6 +1,7 @@
 package edu.ineuc.backend.controller;
 
-import edu.ineuc.backend.controller.dto.CreateUserData;
+import edu.ineuc.backend.controller.dto.req.CreateUserData;
+import edu.ineuc.backend.controller.dto.res.CreateUserResponse;
 import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.service.impl.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +25,10 @@ public class UserController {
 
     @PostMapping(path = "/create")
     @Transactional
-    public ResponseEntity createUser(@RequestBody CreateUserData createUserData, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserData createUserData, UriComponentsBuilder uriBuilder){
         CreateUserData data = createUserData;
         User user = userService.createUser(data);
         URI uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).body(user);
+        return ResponseEntity.created(uri).body(new CreateUserResponse(user));
     }
 }

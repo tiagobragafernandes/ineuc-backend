@@ -1,7 +1,7 @@
 package edu.ineuc.backend.controller;
 
-import edu.ineuc.backend.controller.dto.AuthDataDTO;
-import edu.ineuc.backend.controller.dto.TokenResponse;
+import edu.ineuc.backend.controller.dto.req.AuthData;
+import edu.ineuc.backend.controller.dto.res.TokenResponse;
 import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.service.impl.TokenService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +26,8 @@ public class AuthController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity auth(@RequestBody AuthDataDTO authDataDTO){
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(authDataDTO.email(), authDataDTO.password());
+    public ResponseEntity auth(@RequestBody AuthData authData){
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(authData.email(), authData.password());
         Authentication authentication = manager.authenticate(authToken);
         String tokenJWT  = tokenService.generateToken((User) authentication.getPrincipal());
         return ResponseEntity.ok(new TokenResponse(tokenJWT));

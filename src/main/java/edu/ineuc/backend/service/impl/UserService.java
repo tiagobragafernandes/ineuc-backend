@@ -1,6 +1,6 @@
 package edu.ineuc.backend.service.impl;
 
-import edu.ineuc.backend.controller.dto.CreateUserData;
+import edu.ineuc.backend.controller.dto.req.CreateUserData;
 import edu.ineuc.backend.model.User;
 import edu.ineuc.backend.repository.UserRepository;
 import edu.ineuc.backend.service.UserContract;

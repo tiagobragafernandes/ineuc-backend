@@ -1,6 +1,6 @@
 package edu.ineuc.backend.model;
 
-import edu.ineuc.backend.controller.dto.CreateActivityTypeDTO;
+import edu.ineuc.backend.controller.dto.req.CreateActivityTypeData;
 import lombok.*;
 import java.util.List;
 
@@ -22,8 +22,8 @@ public class ActivityType {
     @OneToMany(mappedBy = "activityType", fetch = FetchType.LAZY)
     private List<Activity> activity;
 
-    public ActivityType(CreateActivityTypeDTO createActivityTypeDTO){
-        this.name = createActivityTypeDTO.name();
+    public ActivityType(CreateActivityTypeData createActivityTypeData){
+        this.name = createActivityTypeData.name();
     }
 
 }

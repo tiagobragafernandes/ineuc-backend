@@ -1,7 +1,7 @@
 package edu.ineuc.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.ineuc.backend.controller.dto.CreateActivityDTO;
+import edu.ineuc.backend.controller.dto.req.CreateActivityData;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -30,9 +30,9 @@ public class Activity {
     @JsonIgnore
     private ActivityType activityType;
 
-    public Activity(CreateActivityDTO createActivityDTO, ActivityType activityType, User user){
-        this.description = createActivityDTO.description();
-        this.timeSpent = createActivityDTO.timeSpent();
+    public Activity(CreateActivityData createActivityData, ActivityType activityType, User user){
+        this.description = createActivityData.description();
+        this.timeSpent = createActivityData.timeSpent();
         this.user = user;
         this.activityType = activityType;
     }

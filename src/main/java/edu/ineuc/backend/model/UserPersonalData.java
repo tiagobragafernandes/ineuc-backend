@@ -1,6 +1,6 @@
 package edu.ineuc.backend.model;
 
-import edu.ineuc.backend.controller.dto.CreateUserPersonalData;
+import edu.ineuc.backend.controller.dto.req.CreateUserPersonalData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

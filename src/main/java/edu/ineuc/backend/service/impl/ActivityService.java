@@ -1,6 +1,6 @@
 package edu.ineuc.backend.service.impl;
 
-import edu.ineuc.backend.controller.dto.CreateActivityDTO;
+import edu.ineuc.backend.controller.dto.req.CreateActivityData;
 import edu.ineuc.backend.model.Activity;
 import edu.ineuc.backend.model.ActivityType;
 import edu.ineuc.backend.model.User;
@@ -22,9 +22,9 @@ public class ActivityService implements ActivityContract {
     private final UserRepository userRepository;
     private final ActivityTypeRepository activityTypeRepository;
 
-    public Activity createActivity(CreateActivityDTO createActivityDTO){
-        Long activityId = createActivityDTO.activityId();
-        Long userId = createActivityDTO.userId();
+    public Activity createActivity(CreateActivityData createActivityData){
+        Long activityId = createActivityData.activityId();
+        Long userId = createActivityData.userId();
 
         ActivityType activityType = activityTypeRepository.findById(activityId)
                 .orElseThrow(() ->
@@ -36,7 +36,7 @@ public class ActivityService implements ActivityContract {
                         new EntityNotFoundException("ERRO: Usuário com id: " + userId + " não foi encontrada.")
                 );
 
-        Activity activity = activityRepository.save(new Activity(createActivityDTO, activityType, user));
+        Activity activity = activityRepository.save(new Activity(createActivityData, activityType, user));
         return activity;
     }
 

@@ -1,6 +1,6 @@
 package edu.ineuc.backend.service.impl;
 
-import edu.ineuc.backend.controller.dto.CreateActivityTypeDTO;
+import edu.ineuc.backend.controller.dto.req.CreateActivityTypeData;
 import edu.ineuc.backend.model.ActivityType;
 import edu.ineuc.backend.repository.ActivityTypeRepository;
 import edu.ineuc.backend.service.ActivityTypeContract;
@@ -14,8 +14,8 @@ public class ActivityTypeService implements ActivityTypeContract {
 
     private final ActivityTypeRepository activityTypeRepository;
 
-    public ActivityType createActivityType(CreateActivityTypeDTO createActivityTypeDTO){
-        ActivityType activityType = activityTypeRepository.save(new ActivityType(createActivityTypeDTO));
+    public ActivityType createActivityType(CreateActivityTypeData createActivityTypeData){
+        ActivityType activityType = activityTypeRepository.save(new ActivityType(createActivityTypeData));
         return activityType;
     }
 
