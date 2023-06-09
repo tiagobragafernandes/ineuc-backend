@@ -6,8 +6,6 @@ import edu.ineuc.backend.model.Activity;
 import java.util.List;
 
 public interface ActivityContract {
-
     public Activity createActivity(CreateActivityData createActivityData);
     public List<Activity> listActivities(Long userId);
-
 }
