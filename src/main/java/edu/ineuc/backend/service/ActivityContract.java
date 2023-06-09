@@ -8,7 +8,6 @@ import java.util.List;
 public interface ActivityContract {
 
     public Activity createActivity(CreateActivityDTO createActivityDTO);
-
     public List<Activity> listActivities(Long userId);
 
 }
