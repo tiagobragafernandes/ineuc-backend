@@ -42,4 +42,14 @@ public class ActivityController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/get/{activityId}")
+    public ResponseEntity<Activity> getActivity(@PathVariable Long activityId){
+        try{
+            Activity activity = activityService.getActivity(activityId);
+            return ResponseEntity.ok(activity);
+        }catch (Exception ex){
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
